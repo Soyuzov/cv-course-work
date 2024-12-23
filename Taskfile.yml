@@ -1,0 +1,16 @@
+version: '3'
+
+dotenv: [".env"] 
+override_env: true 
+
+tasks:
+  build:
+    desc: Выполнить сборку контейнера
+    cmds:
+      - docker-compose build 
+
+  app:
+    desc: Запустить приложение
+    cmds:
+      - defer: docker-compose stop
+      - docker-compose up app
